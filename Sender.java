@@ -5,8 +5,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 // Biblioteca Gson
-//import com.google.gson.Gson;
-//import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 public class Sender{
@@ -153,28 +153,28 @@ public class Sender{
 			
 			
 			// Criando o objeto mensagem
-			//Mensagem mensagemInfo = new Mensagem();
+			Mensagem mensagemInfo = new Mensagem();
 			
-			//int DESTport = 9876;
-			//int SRCport = 9876;
+			int DESTport = 9876;
+			int SRCport = 9876;
 			
 			//mensagemInfo.srcPort =  SRCport;
-			//mensagemInfo.destPort = SRCport;
-			//mensagemInfo.ID = nextSeqNum;
-			//mensagemInfo.ACK = recACK;
-			//mensagemInfo.DATA = mensagem;
+			mensagemInfo.destPort = SRCport;
+			mensagemInfo.ID = nextSeqNum;
+			mensagemInfo.ACK = recACK;
+			mensagemInfo.DATA = mensagem;
 			
 			// Convertendo a mensagem para JSON
-			//Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			//String jsonString = gson.toJson(mensagemInfo);
-			//System.out.println(jsonString);
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			String jsonString = gson.toJson(mensagemInfo);
+			System.out.println(jsonString);
 			
 			
 			// Enviando a mensagem no formato UDP
-			//byte[] sendMensagemUDPBuffer = new byte[1024];
-			//sendMensagemUDPBuffer = jsonString.getBytes();
-			//DatagramPacket sendMensagemUDPPkt = new DatagramPacket(sendMensagemUDPBuffer, sendMensagemUDPBuffer.length, IPAddress, 9876);
-			//senderSocket.send(sendMensagemUDPPkt);
+			byte[] sendMensagemUDPBuffer = new byte[1024];
+			sendMensagemUDPBuffer = jsonString.getBytes();
+			DatagramPacket sendMensagemUDPPkt = new DatagramPacket(sendMensagemUDPBuffer, sendMensagemUDPBuffer.length, IPAddress, 9876);
+			senderSocket.send(sendMensagemUDPPkt);
 			
 			
 			nextSeqNum++;
